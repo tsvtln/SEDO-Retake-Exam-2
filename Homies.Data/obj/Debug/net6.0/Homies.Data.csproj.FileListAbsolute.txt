@@ -1,0 +1,15 @@
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/bin/Debug/net6.0/Homies.Data.deps.json
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/bin/Debug/net6.0/Homies.Data.runtimeconfig.json
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/bin/Debug/net6.0/Homies.Data.dll
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/bin/Debug/net6.0/Homies.Data.pdb
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.csproj.AssemblyReference.cache
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.GeneratedMSBuildEditorConfig.editorconfig
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.AssemblyInfoInputs.cache
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.AssemblyInfo.cs
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.csproj.CoreCompileInputs.cache
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.sourcelink.json
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.dll
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/refint/Homies.Data.dll
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.pdb
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/Homies.Data.genruntimeconfig.cache
+/home/dinky/PycharmProjects/SoftUni/SEDO-Retake-Exam-2/Homies.Data/obj/Debug/net6.0/ref/Homies.Data.dll
