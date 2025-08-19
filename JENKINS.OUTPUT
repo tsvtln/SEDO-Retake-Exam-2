@@ -1,0 +1,234 @@
+Started by user tsvtln
+
+Obtained Jenkinsfile from git https://github.com/tsvtln/SEDO-Retake-Exam-2
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/lib/jenkins/workspace/EXAM2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/tsvtln/SEDO-Retake-Exam-2
+ > git init /var/lib/jenkins/workspace/EXAM2 # timeout=10
+Fetching upstream changes from https://github.com/tsvtln/SEDO-Retake-Exam-2
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/tsvtln/SEDO-Retake-Exam-2 +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/tsvtln/SEDO-Retake-Exam-2 # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision f7a706217883df9465a1a9a75cebf1fab0105031 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f7a706217883df9465a1a9a75cebf1fab0105031 # timeout=10
+Commit message: "Update ci.yml"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] echo
+Checkout...
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/EXAM2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/tsvtln/SEDO-Retake-Exam-2 # timeout=10
+Fetching upstream changes from https://github.com/tsvtln/SEDO-Retake-Exam-2
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/tsvtln/SEDO-Retake-Exam-2 +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision f7a706217883df9465a1a9a75cebf1fab0105031 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f7a706217883df9465a1a9a75cebf1fab0105031 # timeout=10
+Commit message: "Update ci.yml"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Restore the project)
+[Pipeline] echo
+Restore the project...
+[Pipeline] sh
++ dotnet restore
+
+Welcome to .NET 8.0!
+---------------------
+SDK Version: 8.0.413
+
+Telemetry
+---------
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_CLI_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+
+Read more about .NET CLI Tools telemetry: https://aka.ms/dotnet-cli-telemetry
+
+----------------
+Installed an ASP.NET Core HTTPS development certificate.
+To trust the certificate, view the instructions: https://aka.ms/dotnet-https-linux
+
+----------------
+Write your first app: https://aka.ms/dotnet-hello-world
+Find out what's new: https://aka.ms/dotnet-whats-new
+Explore documentation: https://aka.ms/dotnet-docs
+Report issues and find source on GitHub: https://github.com/dotnet/core
+Use 'dotnet --help' to see available commands or visit: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+  Determining projects to restore...
+  Restored /var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj (in 21.94 sec).
+  Restored /var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj (in 55.63 sec).
+  Restored /var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj (in 55.63 sec).
+  Restored /var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj (in 55.64 sec).
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build the project)
+[Pipeline] echo
+Build the project
+[Pipeline] sh
++ dotnet build --no-restore
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Types' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Events' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'EventsParticipants' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+  Homies.Data -> /var/lib/jenkins/workspace/EXAM2/Homies.Data/bin/Debug/net6.0/Homies.Data.dll
+/var/lib/jenkins/workspace/EXAM2/Homies/Areas/Identity/Pages/Account/Register.cshtml.cs(53,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(23,42): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Types' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Events' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'EventsParticipants' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/Details.cshtml(23,14): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/All.cshtml(22,18): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/Joined.cshtml(21,18): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Shared/_Layout.cshtml(26,30): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(125,45): warning CS8604: Possible null reference argument for parameter 'entity' in 'EntityEntry<EventParticipant> DbSet<EventParticipant>.Remove(EventParticipant entity)'. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(119,17): warning CS8073: The result of the expression is always 'false' since a value of type 'ValueTask<Event?>' is never equal to 'null' of type 'ValueTask<Event?>?' [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+  Homies -> /var/lib/jenkins/workspace/EXAM2/Homies/bin/Debug/net6.0/Homies.dll
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(90,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(111,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(144,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+  Homies.Tests -> /var/lib/jenkins/workspace/EXAM2/Homies.Tests/bin/Debug/net6.0/Homies.Tests.dll
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(117,45): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(77,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(80,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(81,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(114,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(117,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(118,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(142,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(145,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(146,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(147,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(178,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(181,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(215,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(216,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+  Homies.IntegrationTests -> /var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/bin/Debug/net6.0/Homies.IntegrationTests.dll
+
+Build succeeded.
+
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Types' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Events' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Data/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'EventsParticipants' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies.Data/Homies.Data.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Areas/Identity/Pages/Account/Register.cshtml.cs(53,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(23,42): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Types' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'Events' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Data/HomiesDbContext.cs(10,16): warning CS8618: Non-nullable property 'EventsParticipants' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/Details.cshtml(23,14): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/All.cshtml(22,18): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Event/Joined.cshtml(21,18): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Views/Shared/_Layout.cshtml(26,30): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(125,45): warning CS8604: Possible null reference argument for parameter 'entity' in 'EntityEntry<EventParticipant> DbSet<EventParticipant>.Remove(EventParticipant entity)'. [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies/Controllers/EventController.cs(119,17): warning CS8073: The result of the expression is always 'false' since a value of type 'ValueTask<Event?>' is never equal to 'null' of type 'ValueTask<Event?>?' [/var/lib/jenkins/workspace/EXAM2/Homies/Homies.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(90,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(111,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.Tests/EventControllerUnitTests.cs(144,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.Tests/Homies.Tests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(117,45): warning CS8602: Dereference of a possibly null reference. [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(77,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(80,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(81,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(114,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(117,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(118,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(142,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(145,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(146,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(147,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(178,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(181,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(215,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/EventControllerIntegrationTests.cs(216,13): warning NUnit2005: Consider using the constraint model, Assert.That(actual, Is.EqualTo(expected)), instead of the classic model, Assert.AreEqual(expected, actual) (https://github.com/nunit/nunit.analyzers/tree/master/documentation/NUnit2005.md) [/var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/Homies.IntegrationTests.csproj]
+    32 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:22.87
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test the project)
+[Pipeline] echo
+Test the project
+[Pipeline] sh
++ dotnet test --no-build --verbosity normal
+Build started 8/19/2025 11:31:06 AM.
+     1>Project "/var/lib/jenkins/workspace/EXAM2/Homies.sln" on node 1 (VSTest target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+Test run for /var/lib/jenkins/workspace/EXAM2/Homies.Tests/bin/Debug/net6.0/Homies.Tests.dll (.NETCoreApp,Version=v6.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Test run for /var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/bin/Debug/net6.0/Homies.IntegrationTests.dll (.NETCoreApp,Version=v6.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+NUnit Adapter 4.4.0.0: Test execution started
+Running all tests in /var/lib/jenkins/workspace/EXAM2/Homies.Tests/bin/Debug/net6.0/Homies.Tests.dll
+   NUnit3TestExecutor discovered 4 of 4 NUnit test cases using Current Discovery mode, Non-Explicit run
+NUnit Adapter 4.4.0.0: Test execution started
+Running all tests in /var/lib/jenkins/workspace/EXAM2/Homies.IntegrationTests/bin/Debug/net6.0/Homies.IntegrationTests.dll
+   NUnit3TestExecutor discovered 5 of 5 NUnit test cases using Current Discovery mode, Non-Explicit run
+  Passed Add_Get_ShouldReturnViewWithEventFormModel [4 s]
+NUnit Adapter 4.4.0.0: Test execution complete
+  Passed AddEvent_ShouldInsertEventIntoDatabase [3 s]
+  Passed Add_Post_InvalidModel_ShouldReturnViewWithModel [720 ms]
+  Passed Add_Post_ValidModel_ShouldRedirectToAll [180 ms]
+  Passed Edit_Post_ValidModel_ShouldRedirectToAll [34 ms]
+
+Test Run Successful.
+Total tests: 4
+     Passed: 4
+ Total time: 10.6249 Seconds
+NUnit Adapter 4.4.0.0: Test execution complete
+  Passed EditEvent_ShouldUpdateEventInDatabase [156 ms]
+  Passed Joined_ShouldReturnUserJoinedEvents [267 ms]
+  Passed JoinEvent_ShouldAddParticipantToDatabase [34 ms]
+  Passed LeaveEvent_ShouldRemoveParticipantFromDatabase [44 ms]
+
+Test Run Successful.
+Total tests: 5
+     Passed: 5
+ Total time: 8.4065 Seconds
+     1>Done Building Project "/var/lib/jenkins/workspace/EXAM2/Homies.sln" (VSTest target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:15.58
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
